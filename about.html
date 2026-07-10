@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Equebal Hussain - Lead GenAI & AI Platforms Engineer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cosmic: {
+                            950: '#030014',
+                            900: '#0a0526',
+                            800: '#120b38',
+                            700: '#1a104f',
+                            500: '#8b5cf6',
+                            400: '#a78bfa',
+                        },
+                        cyber: {
+                            cyan: '#06b6d4',
+                            pink: '#ec4899',
+                            emerald: '#10b981',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030014;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .handwritten {
+            font-family: 'Caveat', cursive;
+        }
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Glowing effects */
+        .glow-avatar {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4), 0 0 60px rgba(236, 72, 153, 0.2);
+        }
+        .glow-avatar-active {
+            box-shadow: 0 0 50px rgba(6, 182, 212, 0.8), 0 0 100px rgba(236, 72, 153, 0.6);
+            border-color: #06b6d4 !important;
+        }
+        .glow-text {
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+        .glow-card {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .glow-border {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .glow-border:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+        }
+        
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030014;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e1b4b;
+            border-radius: 9999px;
+            border: 2px solid #030014;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6;
+        }
+
+        /* 3D Orbiting animations */
+        @keyframes rotateGlobe {
+            from { transform: rotateY(0deg) rotateX(10deg); }
+            to { transform: rotateY(360deg) rotateX(10deg); }
+        }
+        .rotate-globe-active {
+            animation: rotateGlobe 40s linear infinite;
+        }
+        .rotate-globe-paused {
+            animation: rotateGlobe 160s linear infinite;
+        }
+
+        @keyframes counterRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+        .counter-rotate-active {
+            animation: counterRotate 40s linear infinite;
+        }
+        .counter-rotate-paused {
+            animation: counterRotate 160s linear infinite;
+        }
+
+        /* Glassmorphism utility classes */
+        .glass-nav {
+            background: rgba(3, 0, 20, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen relative selection:bg-cosmic-500 selection:text-white">
+
+    <!-- Ambient Background Gradients -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-cosmic-500/10 blur-[120px] animate-pulse" style="animation-duration: 10s;"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-cyber-pink/5 blur-[150px] animate-pulse" style="animation-duration: 15s;"></div>
+        <div class="absolute top-[40%] left-[30%] w-[400px] h-[400px] rounded-full bg-cyber-cyan/5 blur-[130px] animate-pulse" style="animation-duration: 12s;"></div>
+    </div>
+
+    <!-- STICKY NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="main-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <a href="#hero" class="flex items-center gap-3 group">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cosmic-500 to-cyber-cyan flex items-center justify-center font-bold text-lg text-white shadow-lg transition-transform group-hover:scale-105">
+                            ME
+                        </div>
+                        <div>
+                            <span class="text-lg font-bold text-white tracking-tight leading-none block">Mohammad Hussain</span>
+                            <span class="text-[10px] text-cyber-cyan font-mono uppercase tracking-wider block">Lead AI Engineer</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Skills</a>
+                    <a href="#experience" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Experience</a>
+                    <a href="#education" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Education</a>
+                    <a href="#prompt" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Meta Muse Prompt</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl text-xs font-bold transition-all hover:border-cosmic-500/30">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-cosmic-950/95 px-4 py-4 space-y-3">
+            <a href="#about" class="block text-sm font-medium text-slate-300 hover:text-white py-2" onclick="toggleMobileMenu()">About</a>
+            <a href="#skills" class="block text-sm font-medium text-slate-300 hover:text-white py-2" onclick="toggleMobileMenu()">Skills</a>
+            <a href="#experience" class="block text-sm font-medium text-slate-300 hover:text-white py-2" onclick="toggleMobileMenu()">Experience</a>
+            <a href="#education" class="block text-sm font-medium text-slate-300 hover:text-white py-2" onclick="toggleMobileMenu()">Education</a>
+            <a href="#prompt" class="block text-sm font-medium text-slate-300 hover:text-white py-2" onclick="toggleMobileMenu()">Meta Muse Prompt</a>
+            <a href="#contact" class="block w-full text-center px-5 py-2.5 bg-gradient-to-r from-cosmic-500 to-cyber-cyan text-white rounded-xl text-xs font-bold" onclick="toggleMobileMenu()">
+                Get In Touch
+            </a>
+        </div>
+    </nav>
+
+    <!-- MAIN WRAPPER -->
+    <main class="relative z-10 pt-20">
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative min-h-[calc(100vh-80px)] flex items-center py-12 border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- HERO LEFT: COPY & CTAs -->
+                    <div class="lg:col-span-5 flex flex-col justify-center text-left space-y-6">
+                        <div class="inline-flex items-center gap-2 bg-cosmic-500/10 border border-cosmic-500/20 px-3 py-1.5 rounded-full text-xs text-cosmic-400 font-semibold uppercase tracking-wider w-fit">
+                            <span class="w-2 h-2 rounded-full bg-green-400 animate-ping"></span> Live Interactive Engine
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            Architecting <br>
+                            <span class="bg-gradient-to-r from-cosmic-400 via-cyber-pink to-cyber-cyan bg-clip-text text-transparent">
+                                Corporate GenAI
+                            </span> <br>
+                            Platforms
+                        </h1>
+                        
+                        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl">
+                            Designing resilient production-grade architectures with RAG Pipelines, complex logging systems, and diagnostics automation. Built upon 17+ years of foundational engineering at Microsoft (R&D), Cisco, and Oracle.
+                        </p>
+
+                        <!-- Call To Actions -->
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                            <a href="#contact" class="px-6 py-4 bg-gradient-to-r from-cosmic-500 to-cyber-cyan hover:from-cosmic-400 hover:to-cyber-cyan text-white rounded-2xl text-sm font-bold text-center shadow-lg shadow-cosmic-500/10 hover:shadow-cosmic-500/30 hover:scale-[1.02] transition-all">
+                                <i class="fa-solid fa-paper-plane mr-2"></i> Discuss a Project
+                            </a>
+                            <a href="#experience" class="px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white rounded-2xl text-sm font-bold text-center transition-all">
+                                <i class="fa-solid fa-briefcase mr-2"></i> View Experience
+                            </a>
+                        </div>
+
+                        <!-- Live Telemetry Stats Minimal Banner -->
+                        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/5">
+                            <div>
+                                <span class="text-2xl font-extrabold text-white block">17+</span>
+                                <span class="text-xs text-slate-400">Years Exp</span>
+                            </div>
+                            <div>
+                                <span class="text-2xl font-extrabold text-cyber-cyan block">M.Tech</span>
+                                <span class="text-xs text-slate-400">ISI Kolkata</span>
+                            </div>
+                            <div>
+                                <span class="text-2xl font-extrabold text-cyber-pink block">Global</span>
+                                <span class="text-xs text-slate-400">Hackathon Win</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HERO RIGHT: THE 3D GLOBE INTERACTIVE VIEWPORT -->
+                    <div class="lg:col-span-7 w-full flex flex-col gap-6">
+                        
+                        <!-- Main Visualizer Shell -->
+                        <div class="relative overflow-hidden bg-gradient-to-b from-cosmic-900 to-cosmic-950 border border-white/10 rounded-3xl p-6 shadow-2xl h-[550px] flex flex-col justify-between">
+                            
+                            <!-- Stars Backdrop Matrix -->
+                            <div class="absolute inset-0 pointer-events-none opacity-20 z-0">
+                                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="15%" cy="20%" r="1" fill="#fff" />
+                                    <circle cx="40%" cy="75%" r="1.5" fill="#fff" class="animate-pulse" />
+                                    <circle cx="75%" cy="30%" r="1" fill="#fff" />
+                                    <circle cx="80%" cy="80%" r="2" fill="#fff" class="animate-pulse" />
+                                    <circle cx="50%" cy="45%" r="1.5" fill="#fff" />
+                                </svg>
+                            </div>
+
+                            <!-- HUD Display Header -->
+                            <div class="relative z-20 flex items-center justify-between border-b border-white/5 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                                    <span class="text-[10px] code-font text-slate-400 ml-2">cosmic_network_mesh.py</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[10px] code-font text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/20 px-2.5 py-0.5 rounded-full uppercase font-bold tracking-wider" id="hud-mode-badge">
+                                        Active Rotating Mode
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Globe Centerpiece -->
+                            <div class="relative flex-1 flex items-center justify-center overflow-visible my-4 z-10">
+                                
+                                <!-- Orbital Ring Wrapper (Transforms in 3D Space) -->
+                                <div class="relative w-72 h-72 md:w-80 md:h-80 transform-style:preserve-3d flex items-center justify-center transition-all duration-1000 rotate-globe-active" id="globe-rotator">
+                                    
+                                    <!-- Inner Holographic Sphere Grid -->
+                                    <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-900/40 to-purple-950/20 border border-cosmic-500/20 shadow-[inset_0_0_50px_rgba(139,92,246,0.15)] overflow-hidden flex items-center justify-center">
+                                        <div class="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.05)_1px,transparent_1px)] bg-[size:16px_16px]"></div>
+                                        <div class="w-48 h-48 rounded-full bg-radial-gradient from-cosmic-500/20 to-transparent blur-xl"></div>
+                                    </div>
+
+                                    <!-- Orbiting Badge 1: What I Do -->
+                                    <div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-white text-cosmic-950 px-3 py-2 rounded-xl shadow-lg border-2 border-cosmic-500/30 w-36 transition-all duration-500 counter-rotate-active" id="node-whatido">
+                                        <div class="text-[11px] font-bold text-cosmic-500 uppercase tracking-wider border-b border-cosmic-500/10 pb-0.5 mb-1 handwritten">
+                                            <i class="fa-solid fa-brain mr-1 text-cosmic-500"></i> What I Do
+                                        </div>
+                                        <div class="text-[10px] font-semibold leading-tight text-slate-800">
+                                            GenAI, RAG Pipelines, LLM APIs
+                                        </div>
+                                    </div>
+
+                                    <!-- Orbiting Badge 2: My Role -->
+                                    <div class="absolute top-1/4 -right-16 bg-white text-cosmic-950 px-3 py-2 rounded-xl shadow-lg border-2 border-cosmic-500/30 w-36 transition-all duration-500 counter-rotate-active" id="node-role">
+                                        <div class="text-[11px] font-bold text-cosmic-500 uppercase tracking-wider border-b border-cosmic-500/10 pb-0.5 mb-1 handwritten">
+                                            <i class="fa-solid fa-user-gear mr-1 text-cosmic-500"></i> My Role
+                                        </div>
+                                        <div class="text-[10px] font-semibold leading-tight text-slate-800">
+                                            Lead GenAI & Platform Engineer
+                                        </div>
+                                    </div>
+
+                                    <!-- Orbiting Badge 3: Tech Stack -->
+                                    <div class="absolute bottom-6 -right-12 bg-white text-cosmic-950 px-3 py-2 rounded-xl shadow-lg border-2 border-cosmic-500/30 w-36 transition-all duration-500 counter-rotate-active" id="node-tech">
+                                        <div class="text-[11px] font-bold text-cosmic-500 uppercase tracking-wider border-b border-cosmic-500/10 pb-0.5 mb-1 handwritten">
+                                            <i class="fa-solid fa-code mr-1 text-cosmic-500"></i> Core Stack
+                                        </div>
+                                        <div class="text-[10px] font-semibold leading-tight text-slate-800">
+                                            Python, KQL, C++, ADX, Azure ADF
+                                        </div>
+                                    </div>
+
+                                    <!-- Orbiting Badge 4: Legacy -->
+                                    <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-white text-cosmic-950 px-3 py-2 rounded-xl shadow-lg border-2 border-cosmic-500/30 w-36 transition-all duration-500 counter-rotate-active" id="node-legacy">
+                                        <div class="text-[11px] font-bold text-cosmic-500 uppercase tracking-wider border-b border-cosmic-500/10 pb-0.5 mb-1 handwritten">
+                                            <i class="fa-solid fa-clock-rotate-left mr-1 text-cosmic-500"></i> Legacy
+                                        </div>
+                                        <div class="text-[10px] font-semibold leading-tight text-slate-800">
+                                            17+ Yrs Systems (Cisco, Oracle, MS)
+                                        </div>
+                                    </div>
+
+                                    <!-- Orbiting Badge 5: Education -->
+                                    <div class="absolute bottom-6 -left-12 bg-white text-cosmic-950 px-3 py-2 rounded-xl shadow-lg border-2 border-cosmic-500/30 w-36 transition-all duration-500 counter-rotate-active" id="node-edu">
+                                        <div class="text-[11px] font-bold text-cosmic-500 uppercase tracking-wider border-b border-cosmic-500/10 pb-0.5 mb-1 handwritten">
+                                            <i class="fa-solid fa-graduation-cap mr-1 text-cosmic-500"></i> Education
+                                        </div>
+                                        <div class="text-[10px] font-semibold leading-tight text-slate-800">
+                                            M.Tech CS @ ISI Kolkata, NIT Patna
+                                        </div>
+                                    </div>
+
+                                    <!-- Orbiting Badge 6: Highlights -->
+                                    <div class="absolute top-1/4 -left-16 bg-white text-cosmic-950 px-3 py-2 rounded-xl shadow-lg border-2 border-cosmic-500/30 w-36 transition-all duration-500 counter-rotate-active" id="node-hack">
+                                        <div class="text-[11px] font-bold text-cosmic-500 uppercase tracking-wider border-b border-cosmic-500/10 pb-0.5 mb-1 handwritten">
+                                            <i class="fa-solid fa-trophy mr-1 text-cosmic-500"></i> Highlights
+                                        </div>
+                                        <div class="text-[10px] font-semibold leading-tight text-slate-800">
+                                            Global Microsoft Hackathon Winner
+                                        </div>
+                                    </div>
+
+                                </div> <!-- End orbital-rotator -->
+
+                                <!-- STABLE CENTERED AVATAR PORTRAIT (Billboards flat, never inverts or flips) -->
+                                <div class="absolute z-30 transition-all duration-[1500ms] ease-out flex flex-col items-center gap-3" id="stable-avatar-wrapper">
+                                    <div class="relative">
+                                        <!-- Glowing background rings -->
+                                        <div class="absolute inset-[-15px] rounded-full border border-cosmic-500/40 bg-cosmic-500/5 animate-ping" id="avatar-ping"></div>
+                                        <div class="absolute inset-[-8px] rounded-full border border-cyber-pink/30 bg-cyber-pink/5 animate-pulse"></div>
+                                        
+                                        <!-- Portrait Lens Frame -->
+                                        <div class="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-cosmic-500 overflow-hidden bg-slate-900 shadow-2xl glow-avatar transition-all duration-[1500ms]" id="avatar-frame">
+                                            <!-- Fallback profile image handling -->
+                                            <img 
+                                                src="photo_white_background.jpeg" 
+                                                alt="Mohammad Equebal Hussain" 
+                                                id="user-portrait" 
+                                                class="w-full h-full object-cover transition-transform duration-1000"
+                                                onerror="this.src='image_d50359.jpg'; this.onerror=function(){this.src='https://placehold.co/150x150/120b38/06b6d4?text=MH';}"
+                                            >
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Zoomed In stable UI label tag -->
+                                    <div class="bg-gradient-to-r from-cyber-cyan to-cosmic-500 text-[10px] text-white px-3 py-1 rounded-full uppercase tracking-wider font-extrabold opacity-0 scale-50 transition-all duration-700 pointer-events-none" id="avatar-zoom-tag">
+                                        Portrait Focus Locked
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Interactive Dashboard Control HUD Panel -->
+                            <div class="relative z-20 bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+                                <div class="flex items-center gap-3 w-full sm:w-auto">
+                                    <!-- Visual Progress Dial -->
+                                    <div class="relative w-10 h-10 flex items-center justify-center">
+                                        <svg class="w-full h-full -rotate-90">
+                                            <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.1)" stroke-width="3" fill="transparent" />
+                                            <circle cx="20" cy="20" r="16" stroke="#06b6d4" stroke-width="3" fill="transparent" stroke-dasharray="100" stroke-dashoffset="100" id="timeline-progress-ring" class="transition-all duration-100" />
+                                        </svg>
+                                        <span class="absolute text-xs font-bold text-white code-font" id="countdown-text">7s</span>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Animation Loop Timeline</div>
+                                        <div class="text-xs font-bold text-white" id="timeline-status-text">Orbital Rotation Phase</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Override action controls -->
+                                <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                                    <button onclick="forceZoom()" class="flex-1 sm:flex-initial px-3.5 py-2 bg-cosmic-500 hover:bg-cosmic-400 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-cosmic-500/20 transition-all">
+                                        <i class="fa-solid fa-expand"></i> Hold Zoom
+                                    </button>
+                                    <button onclick="resetCycle()" class="px-3.5 py-2 bg-white/5 hover:bg-white/10 text-slate-300 rounded-xl text-xs font-bold transition-all" title="Reset Timeline Cycle">
+                                        <i class="fa-solid fa-arrows-rotate"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div> <!-- End Visualizer Shell -->
+                        
+                        <!-- Mini Simulation Telemetry Feed -->
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-wrap justify-between items-center text-xs text-slate-400 font-mono gap-3">
+                            <div><span class="text-slate-500">Speed:</span> <span id="tel-velocity" class="text-cyber-cyan">30.0 deg/sec</span></div>
+                            <div><span class="text-slate-500">Billboarding:</span> <span class="text-cyber-emerald"><i class="fa-solid fa-circle-check"></i> Connected</span></div>
+                            <div><span class="text-slate-500">Z-Scale:</span> <span id="tel-scale" class="text-white">1.00</span></div>
+                        </div>
+
+                    </div> <!-- End Hero Right -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about" class="py-24 border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- Text side -->
+                    <div class="space-y-6">
+                        <span class="text-xs font-bold uppercase tracking-widest text-cyber-cyan block">// Professional Summary</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                            Bridging Core Systems Engineering with Modern Generative AI
+                        </h2>
+                        <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                            With over 17 years of experience delivering highly resilient, performant software systems at organizations like <strong>Microsoft</strong>, <strong>Oracle</strong>, and <strong>Cisco</strong>, I represent a rare class of systems engineers who have transitioned to lead AI engineering.
+                        </p>
+                        <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                            I construct productionized corporate Retrieval-Augmented Generation (RAG) pipelines, set up enterprise telemetry layers via KQL, and design auto-diagnostic systems that significantly reduce engineering overhead.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                            <div class="bg-white/5 border border-white/5 p-4 rounded-2xl flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-cosmic-500/20 flex items-center justify-center text-cosmic-400 shrink-0">
+                                    <i class="fa-solid fa-bolt text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm">Enterprise RAG Setup</h4>
+                                    <p class="text-slate-400 text-xs mt-1">Robust chunking strategies, vector databases, and semantic retrieval pipelines.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white/5 border border-white/5 p-4 rounded-2xl flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-cyber-pink/20 flex items-center justify-center text-cyber-pink shrink-0">
+                                    <i class="fa-solid fa-binoculars text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm">Observability & Logs</h4>
+                                    <p class="text-slate-400 text-xs mt-1">High-throughput tracking using KQL/ADX for platform diagnostic intelligence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Info Box Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Stat Card 1 -->
+                        <div class="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-3xl p-6 glow-border text-left">
+                            <i class="fa-solid fa-award text-3xl text-cosmic-400 mb-4 block"></i>
+                            <h3 class="text-white font-extrabold text-lg mb-1">Global Winner</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Recognized as an overall winner at the Microsoft Global Hackathon, creating GenAI tools.</p>
+                        </div>
+                        <!-- Stat Card 2 -->
+                        <div class="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-3xl p-6 glow-border text-left">
+                            <i class="fa-solid fa-graduation-cap text-3xl text-cyber-cyan mb-4 block"></i>
+                            <h3 class="text-white font-extrabold text-lg mb-1">Elite Alumnus</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Completed M.Tech in Computer Science from the prestigious Indian Statistical Institute (ISI), Kolkata.</p>
+                        </div>
+                        <!-- Stat Card 3 -->
+                        <div class="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-3xl p-6 glow-border text-left">
+                            <i class="fa-solid fa-microchip text-3xl text-cyber-pink mb-4 block"></i>
+                            <h3 class="text-white font-extrabold text-lg mb-1">Deep Tech Veteran</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Extensive expertise in C++, memory optimization, multi-threading, and networking protocols.</p>
+                        </div>
+                        <!-- Stat Card 4 -->
+                        <div class="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-3xl p-6 glow-border text-left">
+                            <i class="fa-solid fa-server text-3xl text-cyber-emerald mb-4 block"></i>
+                            <h3 class="text-white font-extrabold text-lg mb-1">Cloud Orchestrator</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Managing cloud-native environments using Azure Data Factory, ADX, and serverless architectures.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TECH STACK & SKILLS SECTION -->
+        <section id="skills" class="py-24 border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                
+                <span class="text-xs font-bold uppercase tracking-widest text-cyber-pink block mb-2">// Expert Matrix</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">Core Tech Stack & Core Competencies</h2>
+                <p class="text-slate-400 text-sm max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Filter or search through my multi-faceted skill vectors across system engineering and GenAI platform construction.
+                </p>
+
+                <!-- Interactive Filter Controls -->
+                <div class="flex flex-wrap justify-center items-center gap-2 mb-12">
+                    <button onclick="filterSkills('all')" id="btn-all" class="px-4 py-2 bg-cosmic-500 text-white rounded-xl text-xs font-bold transition-all border border-cosmic-500/20 active-skill-btn">All Skills</button>
+                    <button onclick="filterSkills('genai')" id="btn-genai" class="px-4 py-2 bg-white/5 text-slate-300 hover:text-white rounded-xl text-xs font-bold transition-all border border-white/5">Generative AI</button>
+                    <button onclick="filterSkills('systems')" id="btn-systems" class="px-4 py-2 bg-white/5 text-slate-300 hover:text-white rounded-xl text-xs font-bold transition-all border border-white/5">Systems Engineering</button>
+                    <button onclick="filterSkills('cloud')" id="btn-cloud" class="px-4 py-2 bg-white/5 text-slate-300 hover:text-white rounded-xl text-xs font-bold transition-all border border-white/5">Data & Cloud</button>
+                    <button onclick="filterSkills('languages')" id="btn-languages" class="px-4 py-2 bg-white/5 text-slate-300 hover:text-white rounded-xl text-xs font-bold transition-all border border-white/5">Languages</button>
+                </div>
+
+                <!-- Skills Showcase Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-left" id="skills-grid">
+                    
+                    <!-- GenAI Skills -->
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="genai">
+                        <i class="fa-solid fa-brain text-2xl text-cyber-cyan mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">RAG Pipelines</h4>
+                        <p class="text-slate-400 text-xs mt-1">Chunking, embedding models, vector index searching, prompt tuning.</p>
+                    </div>
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="genai">
+                        <i class="fa-solid fa-gears text-2xl text-cyber-cyan mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">LLM APIs Integration</h4>
+                        <p class="text-slate-400 text-xs mt-1">OpenAI API, Azure OpenAI Service, orchestration frameworks.</p>
+                    </div>
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="genai">
+                        <i class="fa-solid fa-wand-magic-sparkles text-2xl text-cyber-cyan mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">Agentic Workflows</h4>
+                        <p class="text-slate-400 text-xs mt-1">Multi-agent delegation patterns and specialized tool execution.</p>
+                    </div>
+
+                    <!-- Systems Skills -->
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="systems">
+                        <i class="fa-solid fa-chart-line text-2xl text-cyber-pink mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">Observability Layers</h4>
+                        <p class="text-slate-400 text-xs mt-1">KQL/ADX high-volume analytics logging for telemetry diagnostics.</p>
+                    </div>
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="systems">
+                        <i class="fa-solid fa-cubes text-2xl text-cyber-pink mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">Low-Level Networking</h4>
+                        <p class="text-slate-400 text-xs mt-1">TCP/IP stacks, socket program development, routing mechanisms.</p>
+                    </div>
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="systems">
+                        <i class="fa-solid fa-bolt-lightning text-2xl text-cyber-pink mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">Diagnostics Automation</h4>
+                        <p class="text-slate-400 text-xs mt-1">Automating telemetry analysis to reduce diagnostic SLAs from hours to seconds.</p>
+                    </div>
+
+                    <!-- Cloud & Data -->
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="cloud">
+                        <i class="fa-solid fa-database text-2xl text-cyber-emerald mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">Azure Data Explorer (ADX)</h4>
+                        <p class="text-slate-400 text-xs mt-1">Structuring telemetry clusters for extremely fast querying.</p>
+                    </div>
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="cloud">
+                        <i class="fa-solid fa-cloud text-2xl text-cyber-emerald mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">Azure ADF Pipelines</h4>
+                        <p class="text-slate-400 text-xs mt-1">Data orchestration and scheduled ETL transformation tasks.</p>
+                    </div>
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="cloud">
+                        <i class="fa-solid fa-network-wired text-2xl text-cyber-emerald mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">Vector DBs</h4>
+                        <p class="text-slate-400 text-xs mt-1">Pinecone, FAISS, and Qdrant integration for semantic matching.</p>
+                    </div>
+
+                    <!-- Languages -->
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="languages">
+                        <i class="fa-brands fa-python text-2xl text-cosmic-400 mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">Python</h4>
+                        <p class="text-slate-400 text-xs mt-1">Scientific library usage, pandas, FastAPI, and core scripting.</p>
+                    </div>
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="languages">
+                        <i class="fa-solid fa-code text-2xl text-cosmic-400 mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">C++ Programming</h4>
+                        <p class="text-slate-400 text-xs mt-1">Low-overhead application building, pointers, and memory control.</p>
+                    </div>
+                    <div class="skill-card bg-white/5 border border-white/5 p-5 rounded-2xl glow-border" data-category="languages">
+                        <i class="fa-solid fa-terminal text-2xl text-cosmic-400 mb-3 block"></i>
+                        <h4 class="text-white font-bold text-sm">KQL (Kusto Query Language)</h4>
+                        <p class="text-slate-400 text-xs mt-1">Constructing complex aggregation queries across petabytes of logs.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TIMELINE EXPERIENCE SECTION -->
+        <section id="experience" class="py-24 border-b border-white/5">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                
+                <span class="text-xs font-bold uppercase tracking-widest text-cyber-cyan block mb-2">// Career Milestones</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-16">17+ Year Engineering Journey</h2>
+
+                <!-- Vertical Glowing Path -->
+                <div class="relative text-left border-l-2 border-cosmic-500/20 pl-8 ml-4 space-y-12">
+                    
+                    <!-- Timeline Node 1 -->
+                    <div class="relative">
+                        <!-- Dot on timeline -->
+                        <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-cosmic-950 border-4 border-cosmic-500 flex items-center justify-center">
+                            <div class="w-2.5 h-2.5 rounded-full bg-cyber-cyan"></div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                                    Lead GenAI & Platforms Architect
+                                </h3>
+                                <span class="bg-cosmic-500/20 border border-cosmic-500/30 text-cosmic-400 text-[11px] font-bold uppercase px-3 py-1 rounded-full">
+                                    Microsoft (R&D)
+                                </span>
+                            </div>
+                            <span class="text-xs text-slate-400 block font-mono">Present</span>
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Lead design of internal enterprise generative AI platforms serving internal teams. Crafted highly performant vector searching mechanisms and configured real-time diagnostics structures via KQL and Azure Data Explorer to track system stability. Received multiple corporate performance accolades for architectural innovations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Node 2 -->
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-cosmic-950 border-4 border-cosmic-500 flex items-center justify-center">
+                            <div class="w-2.5 h-2.5 rounded-full bg-slate-500"></div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-white">
+                                    Senior Platforms Engineer
+                                </h3>
+                                <span class="bg-white/5 border border-white/10 text-slate-300 text-[11px] font-bold uppercase px-3 py-1 rounded-full">
+                                    Oracle
+                                </span>
+                            </div>
+                            <span class="text-xs text-slate-400 block font-mono">Previous Tenure</span>
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Managed high-scale telemetry frameworks and platform tools, focusing on system reliability engineering. Developed systems to automatically analyze system event diagnostics logs, drastically slicing alert cycles down to seconds.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Node 3 -->
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-cosmic-950 border-4 border-cosmic-500 flex items-center justify-center">
+                            <div class="w-2.5 h-2.5 rounded-full bg-slate-500"></div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-white">
+                                    Systems Engineer & Software Designer
+                                </h3>
+                                <span class="bg-white/5 border border-white/10 text-slate-300 text-[11px] font-bold uppercase px-3 py-1 rounded-full">
+                                    Cisco
+                                </span>
+                            </div>
+                            <span class="text-xs text-slate-400 block font-mono">Foundational Career</span>
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Built core networking platform modules in C++ with extreme memory optimization constraints. Established deep foundations in routing systems, low-level multi-threaded network programming, and diagnostics troubleshooting.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EDUCATION & ACHIEVEMENTS SECTION -->
+        <section id="education" class="py-24 border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold uppercase tracking-widest text-cyber-pink block mb-2">// Foundations & Credentials</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Academic Credentials & Milestones</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Academics Card -->
+                    <div class="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-cosmic-500/30 transition-all">
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 rounded-2xl bg-cosmic-500/10 flex items-center justify-center text-cosmic-400">
+                                <i class="fa-solid fa-university text-2xl"></i>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-2xl font-extrabold text-white">Academic Qualifications</h3>
+                                <div class="border-l-2 border-cyber-cyan pl-4 space-y-4">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">M.Tech in Computer Science</h4>
+                                        <p class="text-xs text-cyber-cyan font-semibold">Indian Statistical Institute (ISI), Kolkata</p>
+                                        <p class="text-slate-400 text-xs mt-1">Specialized in systems engineering, high performance networks, and robust algorithmic theory.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">B.Tech in Computer Science</h4>
+                                        <p class="text-xs text-slate-400 font-semibold">National Institute of Technology (NIT), Patna</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements Card -->
+                    <div class="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-cyber-pink/30 transition-all">
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 rounded-2xl bg-cyber-pink/10 flex items-center justify-center text-cyber-pink">
+                                <i class="fa-solid fa-trophy text-2xl"></i>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-2xl font-extrabold text-white">Key Achievements</h3>
+                                <ul class="space-y-4 text-sm text-slate-300">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-cyber-emerald mt-1 shrink-0"></i>
+                                        <span><strong>Microsoft Global Hackathon Winner</strong>: Led team to design enterprise-wide internal productivity modules powered by RAG and custom orchestration layers.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-cyber-emerald mt-1 shrink-0"></i>
+                                        <span><strong>Enterprise Telemetry Refinement</strong>: Drastically optimized alert processing latency, converting slow telemetry queries into hyper-efficient KQL pipelines.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-cyber-emerald mt-1 shrink-0"></i>
+                                        <span><strong>Legacy Systems Optimization</strong>: Preserved multi-million dollar performance efficiency thresholds in networking kernels during telecom platform overhauls.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- META MUSE PROMPT PANEL SECTION -->
+        <section id="prompt" class="py-24 border-b border-white/5">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-br from-indigo-950/80 to-cosmic-950/90 border border-cosmic-500/30 rounded-3xl p-8 shadow-2xl relative glow-avatar">
+                    
+                    <div class="absolute -top-3 right-6 bg-gradient-to-r from-cosmic-500 to-cyber-cyan text-[10px] text-white font-extrabold uppercase px-3 py-1 rounded-full tracking-widest shadow-md">
+                        Prompt Console
+                    </div>
+                    
+                    <h3 class="text-2xl font-extrabold text-white mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles text-cyber-cyan"></i> Meta Muse Animation Directive
+                    </h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        This generative prompt directive has been mathematically optimized with precise timeline coordination structures. Direct Meta Muse, Runway Gen-3, or Luma to generate this exact animation sequence perfectly.
+                    </p>
+
+                    <!-- Textarea layout -->
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Prompt Content Directive</span>
+                            <button onclick="copyMetaPrompt()" class="text-xs font-bold text-cyber-cyan hover:text-white flex items-center gap-1.5 transition-colors focus:outline-none bg-white/5 hover:bg-cyber-cyan/10 px-4 py-2 rounded-xl border border-cyber-cyan/20">
+                                <i class="fa-regular fa-copy" id="copy-icon"></i> <span id="copy-btn-text">Copy Prompt Text</span>
+                            </button>
+                        </div>
+                        
+                        <div class="p-5 bg-black/60 border border-white/10 rounded-2xl text-xs leading-relaxed max-h-[300px] overflow-y-auto font-mono text-slate-300 space-y-3" id="prompt-textbox">
+                            <p class="font-bold text-cyber-pink">// METAMUSE ANIMATION TIMELINE CHOREOGRAPHY DIRECTIVE</p>
+                            <p><strong>SUBJECT:</strong> A futuristic cosmic high-tech scene centered on a transparent 3D digital sphere (globe) overlayed with light blue coordinate grids, glowing constellation lines, and orbiting network node badges.</p>
+                            <p><strong>KEY PORTRAIT INSTRUCTION:</strong> Use the portrait file <strong>"photo_white_background.jpeg"</strong> (with immediate fallback to <strong>"image_d50359.jpg"</strong>) as the central avatar headshot. Place it at the absolute geographic center of the globe.</p>
+                            <p><strong>TIMELINE CHOREOGRAPHY (Total Duration: 14 Seconds, Seamless Loopable):</strong></p>
+                            <p class="pl-2 border-l-2 border-cosmic-500">
+                                <strong>• 0.0s to 7.0s (Orbital Phase):</strong> The 3D coordinate sphere rotates actively on its vertical axis. Six whiteboard-style rectangular content panels orbit the sphere dynamically. The central portrait headshot from <strong>"photo_white_background.jpeg"</strong> remains stationed at the exact center, scaling subtly as if locked inside the core of the globe.
+                            </p>
+                            <p class="pl-2 border-l-2 border-cyber-cyan">
+                                <strong>• 7.0s to 9.0s (Glide to Foreground Transition):</strong> The sphere's rotation slows down smoothly to an elegant slow crawl. The avatar portrait headshot from <strong>"photo_white_background.jpeg"</strong> glides directly forward toward the camera view. The portrait scales up in size by 220%. <strong>Crucial stability directive:</strong> The portrait must remain flat, parallel to the lens plane, perfectly billboarding without any 3D inversion, horizontal flipping, or horizontal mirroring. It remains upright and perfectly stable as it moves to the forefront.
+                            </p>
+                            <p class="pl-2 border-l-2 border-cyber-pink">
+                                <strong>• 9.0s to 14.0s (5-Second Static Hold Phase):</strong> The 3D sphere is held completely still in the background. The avatar portrait is locked front-and-center, standing completely legible, highly focused, and brilliantly bright for exactly 5 seconds. A cyan and purple radial aura flares gently behind the portrait to create immense visual depth.
+                            </p>
+                            <p class="pl-2 border-l-2 border-slate-500">
+                                <strong>• 14.0s (Seamless Reset Transition):</strong> The avatar portrait smoothly glides back into the core center of the globe, shrinking to its original scale. The 3D digital sphere starts rotating actively again, transitioning seamlessly to the first frame.
+                            </p>
+                            <p><strong>ORBITING WHITEPANEL TEXT CONTENTS:</strong> Include clear, legible white handwritten-style whiteboard cards floating in orbit displaying:<br>
+                                - Node 1: "What I Do: GenAI, RAG Pipelines, LLM APIs"<br>
+                                - Node 2: "My Role: Lead GenAI & AI Platforms Engineer"<br>
+                                - Node 3: "Core Stack: Python, KQL, C++, ADX, Azure ADF"<br>
+                                - Node 4: "Legacy: 17+ Yrs Systems (Cisco, Oracle, Microsoft)"<br>
+                                - Node 5: "Education: M.Tech CS @ ISI Kolkata, NIT Patna"<br>
+                                - Node 6: "Highlights: Microsoft Global Hackathon Winner"
+                            </p>
+                            <p><strong>VISUAL STYLE:</strong> Sci-fi cybernetics, deep navy blue and cosmic violet ambient lighting, glowing neon dust, ultra-crisp resolution, photorealistic Unreal Engine 5 rendering, smooth 60fps frame transitions.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-24 relative overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                
+                <span class="text-xs font-bold uppercase tracking-widest text-cyber-cyan block mb-2">// Connectivity Matrix</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">Let's Connect</h2>
+                <p class="text-slate-300 text-sm max-w-xl mx-auto mb-12">
+                    Have an interest in custom GenAI platform architecture, observability setups, or looking for a design expert to audit your pipelines? Let's consult.
+                </p>
+
+                <!-- Custom Form Feedback Cards (Hidden by Default) -->
+                <div id="contact-success-card" class="hidden max-w-lg mx-auto mb-8 bg-cyber-emerald/10 border border-cyber-emerald/30 p-5 rounded-2xl flex items-center gap-4 text-left">
+                    <div class="w-12 h-12 bg-cyber-emerald/20 text-cyber-emerald rounded-full flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-check text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-sm">Inquiry Transmitted Successfully</h4>
+                        <p class="text-slate-300 text-xs mt-0.5">Your telemetry data packet was successfully buffered. Hussain will get back to you shortly!</p>
+                    </div>
+                </div>
+
+                <div id="contact-error-card" class="hidden max-w-lg mx-auto mb-8 bg-red-500/10 border border-red-500/30 p-5 rounded-2xl flex items-center gap-4 text-left">
+                    <div class="w-12 h-12 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-sm">Failed Validation</h4>
+                        <p class="text-slate-300 text-xs mt-0.5" id="contact-error-message">Please ensure all telemetry input parameters are complete.</p>
+                    </div>
+                </div>
+
+                <!-- Glassmorphism Form Sheet -->
+                <form id="portfolio-contact-form" onsubmit="handleFormSubmission(event)" class="bg-white/5 border border-white/10 rounded-3xl p-8 text-left space-y-6 max-w-2xl mx-auto backdrop-blur-md">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="contact-name" class="text-xs font-bold text-slate-400 uppercase tracking-wide">Your Name</label>
+                            <input 
+                                type="text" 
+                                id="contact-name" 
+                                placeholder="E.g., John Doe" 
+                                class="w-full bg-cosmic-950/80 border border-white/10 rounded-xl px-4 py-3 text-slate-200 text-sm placeholder-slate-600 focus:outline-none focus:border-cosmic-400 focus:ring-2 focus:ring-cosmic-500/10 transition-all"
+                                required
+                            >
+                        </div>
+                        <div class="space-y-2">
+                            <label for="contact-email" class="text-xs font-bold text-slate-400 uppercase tracking-wide">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="contact-email" 
+                                placeholder="E.g., name@company.com" 
+                                class="w-full bg-cosmic-950/80 border border-white/10 rounded-xl px-4 py-3 text-slate-200 text-sm placeholder-slate-600 focus:outline-none focus:border-cosmic-400 focus:ring-2 focus:ring-cosmic-500/10 transition-all"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="contact-subject" class="text-xs font-bold text-slate-400 uppercase tracking-wide">Inquiry Topic</label>
+                        <select 
+                            id="contact-subject" 
+                            class="w-full bg-cosmic-950/80 border border-white/10 rounded-xl px-4 py-3 text-slate-200 text-sm focus:outline-none focus:border-cosmic-400 focus:ring-2 focus:ring-cosmic-500/10 transition-all"
+                        >
+                            <option value="genai" selected>Generative AI Platform Design</option>
+                            <option value="observability">Observability & Telemetry (KQL/ADX)</option>
+                            <option value="systems">Systems Architecture Consultation</option>
+                            <option value="other">General Networking / Career Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="contact-message" class="text-xs font-bold text-slate-400 uppercase tracking-wide">Telemetry Details / Message</label>
+                        <textarea 
+                            id="contact-message" 
+                            rows="5" 
+                            placeholder="Detail your requirements here..." 
+                            class="w-full bg-cosmic-950/80 border border-white/10 rounded-xl px-4 py-3 text-slate-200 text-sm placeholder-slate-600 focus:outline-none focus:border-cosmic-400 focus:ring-2 focus:ring-cosmic-500/10 transition-all"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-cosmic-500 to-cyber-cyan hover:from-cosmic-400 hover:to-cyber-cyan text-white text-sm font-bold rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Send Data Packet
+                    </button>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-cosmic-950 border-t border-white/10 py-12 text-xs text-slate-500 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cosmic-500 to-cyber-cyan flex items-center justify-center font-bold text-white text-sm shadow">
+                    ME
+                </div>
+                <div>
+                    <p class="font-bold text-slate-300">Mohammad Equebal Hussain</p>
+                    <p class="text-[10px] text-slate-500">Lead GenAI & AI Platforms Engineer</p>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex items-center gap-4 text-base">
+                <a href="#" class="text-slate-400 hover:text-white transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors"><i class="fa-regular fa-envelope"></i></a>
+            </div>
+
+            <p>&copy; 2026 Mohammad Equebal Hussain. Interactive Portfolio Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- TIMELINE ANIMATION JAVASCRIPT ENGINE -->
+    <script>
+        // DOM Elements for Animation Engine
+        const stableAvatarWrapper = document.getElementById('stable-avatar-wrapper');
+        const avatarFrame = document.getElementById('avatar-frame');
+        const avatarZoomTag = document.getElementById('avatar-zoom-tag');
+        const globeRotator = document.getElementById('globe-rotator');
+        const progressRing = document.getElementById('timeline-progress-ring');
+        const countdownText = document.getElementById('countdown-text');
+        const statusText = document.getElementById('timeline-status-text');
+        const hudModeBadge = document.getElementById('hud-mode-badge');
+        const avatarPing = document.getElementById('avatar-ping');
+        
+        // Telemetry DOM
+        const telVelocity = document.getElementById('tel-velocity');
+        const telScale = document.getElementById('tel-scale');
+
+        // Animation hyperparameters
+        const orbitalDuration = 7; // Phase 1: 7 seconds active orbit
+        const transitionDuration = 2; // Phase 2: 2 seconds zoom glide
+        const zoomDuration = 5; // Phase 3: 5 seconds static focus hold
+        const totalDuration = orbitalDuration + transitionDuration + zoomDuration; // 14s cycle duration
+
+        let currentSecond = 0;
+        let timelineState = 'orbit'; // 'orbit', 'gliding', 'zoomed'
+        let animationInterval = null;
+
+        // Interactive orbiting node tracking
+        const whiteboardNodes = [
+            document.getElementById('node-whatido'),
+            document.getElementById('node-role'),
+            document.getElementById('node-tech'),
+            document.getElementById('node-legacy'),
+            document.getElementById('node-edu'),
+            document.getElementById('node-hack')
+        ];
+
+        // Central Timeline State Runner Loop
+        function runTimelineEngine() {
+            currentSecond++;
+            if (currentSecond > totalDuration) {
+                currentSecond = 1;
+            }
+
+            // Progress wheel calculations
+            const percentage = (currentSecond / totalDuration) * 100;
+            progressRing.style.strokeDashoffset = 100 - percentage;
+
+            // Phase 1: Active Orbital Sweep (Seconds 1 - 7)
+            if (currentSecond <= orbitalDuration) {
+                timelineState = 'orbit';
+                countdownText.textContent = `${orbitalDuration - currentSecond + 1}s`;
+                statusText.textContent = "Orbital Rotation Active";
+                hudModeBadge.textContent = "Active Rotating Mode";
+                hudModeBadge.className = "text-[10px] code-font text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/20 px-2.5 py-0.5 rounded-full uppercase font-bold tracking-wider";
+                
+                // Active 3D rotations triggered via CSS classes
+                globeRotator.className = "relative w-72 h-72 md:w-80 md:h-80 transform-style:preserve-3d flex items-center justify-center transition-all duration-1000 rotate-globe-active";
+                whiteboardNodes.forEach(node => {
+                    node.classList.remove('counter-rotate-paused');
+                    node.classList.add('counter-rotate-active');
+                    node.style.opacity = "1";
+                    node.style.transform = "scale(1)";
+                });
+
+                // Standardize Centered Avatar Placement
+                stableAvatarWrapper.style.transform = "translate(-50%, -50%) scale(1)";
+                avatarFrame.className = "w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-cosmic-500 overflow-hidden bg-slate-900 shadow-2xl glow-avatar transition-all duration-[1500ms]";
+                avatarZoomTag.style.opacity = "0";
+                avatarZoomTag.style.transform = "scale(0.5)";
+                avatarPing.style.display = "block";
+
+                // Telemetry values
+                telVelocity.textContent = "30.0 deg/sec";
+                telScale.textContent = "1.00 (Center)";
+            } 
+            // Phase 2: Slow Crawl & Linear Glide Transition (Seconds 8 - 9)
+            else if (currentSecond > orbitalDuration && currentSecond <= (orbitalDuration + transitionDuration)) {
+                timelineState = 'gliding';
+                countdownText.textContent = `${orbitalDuration + transitionDuration - currentSecond + 1}s`;
+                statusText.textContent = "Gliding to Foreground...";
+                hudModeBadge.textContent = "Transition Phase";
+                hudModeBadge.className = "text-[10px] code-font text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-2.5 py-0.5 rounded-full uppercase font-bold tracking-wider";
+
+                // Retardation of vertical spin
+                globeRotator.className = "relative w-72 h-72 md:w-80 md:h-80 transform-style:preserve-3d flex items-center justify-center transition-all duration-1000 rotate-globe-paused";
+                whiteboardNodes.forEach(node => {
+                    node.classList.remove('counter-rotate-active');
+                    node.classList.add('counter-rotate-paused');
+                    node.style.opacity = "0.2"; // Dim panels during avatar highlights
+                    node.style.transform = "scale(0.85)";
+                });
+
+                // Linear forward translation
+                stableAvatarWrapper.style.transform = "translate(-50%, -50%) scale(1.6) translateY(-10px)";
+                avatarFrame.className = "w-24 h-24 md:w-28 md:h-28 rounded-full border-4 overflow-hidden bg-slate-900 shadow-2xl glow-avatar-active transition-all duration-[1500ms]";
+                avatarZoomTag.style.opacity = "1";
+                avatarZoomTag.style.transform = "scale(1)";
+                avatarPing.style.display = "none";
+
+                // Telemetry values
+                telVelocity.textContent = "5.0 deg/sec (Crawl)";
+                telScale.textContent = "1.60 (Zooming)";
+            } 
+            // Phase 3: 5-Second Flat Billboarding Front Hold (Seconds 10 - 14)
+            else {
+                timelineState = 'zoomed';
+                countdownText.textContent = `${totalDuration - currentSecond + 1}s`;
+                statusText.textContent = "Foreground Hold (5 seconds)";
+                hudModeBadge.textContent = "5s Hold Active";
+                hudModeBadge.className = "text-[10px] code-font text-cyber-pink bg-cyber-pink/10 border border-cyber-pink/20 px-2.5 py-0.5 rounded-full uppercase font-bold tracking-wider";
+
+                // Foreground lock scale configuration
+                stableAvatarWrapper.style.transform = "translate(-50%, -50%) scale(2.0) translateY(-15px)";
+                avatarFrame.className = "w-24 h-24 md:w-28 md:h-28 rounded-full border-4 overflow-hidden bg-slate-900 shadow-2xl glow-avatar-active transition-all duration-[1500ms]";
+                avatarZoomTag.style.opacity = "1";
+                avatarZoomTag.style.transform = "scale(1.1)";
+                avatarPing.style.display = "none";
+
+                // Telemetry values
+                telVelocity.textContent = "0.0 deg/sec (Static)";
+                telScale.textContent = "2.00 (Front-and-Center)";
+            }
+        }
+
+        // Trigger Zoom holds immediately
+        function forceZoom() {
+            clearInterval(animationInterval);
+            currentSecond = orbitalDuration; // Position playhead directly to start of Phase 2
+            runTimelineEngine();
+            // Reseed automatic timer loop
+            animationInterval = setInterval(runTimelineEngine, 1000);
+        }
+
+        // Reset timeline completely
+        function resetCycle() {
+            clearInterval(animationInterval);
+            currentSecond = 0;
+            runTimelineEngine();
+            animationInterval = setInterval(runTimelineEngine, 1000);
+        }
+
+        // Start animation execution when page is loaded
+        window.addEventListener('load', () => {
+            resetCycle();
+        });
+
+        // Interactive Skill Cards Filtering Module
+        function filterSkills(category) {
+            const cards = document.querySelectorAll('.skill-card');
+            const buttons = document.querySelectorAll('#skills button');
+
+            // Toggle active styles on buttons
+            buttons.forEach(btn => {
+                if (btn.id === `btn-${category}`) {
+                    btn.className = "px-4 py-2 bg-cosmic-500 text-white rounded-xl text-xs font-bold transition-all border border-cosmic-500/20";
+                } else {
+                    btn.className = "px-4 py-2 bg-white/5 text-slate-300 hover:text-white rounded-xl text-xs font-bold transition-all border border-white/5";
+                }
+            });
+
+            // Filter actual cards
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // Portfolio Contact Submission handler
+        function handleFormSubmission(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+            
+            const successCard = document.getElementById('contact-success-card');
+            const errorCard = document.getElementById('contact-error-card');
+            const errorMsg = document.getElementById('contact-error-message');
+
+            // Reset visibilities
+            successCard.classList.add('hidden');
+            errorCard.classList.add('hidden');
+
+            if (!name || !email || !message) {
+                errorMsg.textContent = "All parameters are mandatory. Fill in name, email, and message.";
+                errorCard.classList.remove('hidden');
+                return;
+            }
+
+            // Successful simulation callback
+            successCard.classList.remove('hidden');
+            document.getElementById('portfolio-contact-form').reset();
+            
+            // Auto hide cards after 10 seconds
+            setTimeout(() => {
+                successCard.classList.add('hidden');
+            }, 10000);
+        }
+
+        // Sticky Nav shrink listener
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('py-1');
+                nav.classList.remove('py-3');
+            } else {
+                nav.classList.add('py-3');
+                nav.classList.remove('py-1');
+            }
+        });
+
+        // Mobile Menu Toggling
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = "fa-solid fa-bars text-xl";
+            } else {
+                menuIcon.className = "fa-solid fa-xmark text-xl";
+            }
+        }
+
+        // Copy mechanism helper
+        function copyMetaPrompt() {
+            const promptBoxText = `// METAMUSE ANIMATION TIMELINE CHOREOGRAPHY DIRECTIVE
+SUBJECT: A futuristic cosmic high-tech scene centered on a transparent 3D digital sphere (globe) overlayed with light blue coordinate grids, glowing constellation lines, and orbiting network node badges.
+
+KEY PORTRAIT INSTRUCTION: Use the portrait file "photo_white_background.jpeg" (with immediate fallback to "image_d50359.jpg") as the central avatar headshot. Place it at the absolute geographic center of the globe.
+
+TIMELINE CHOREOGRAPHY (Total Duration: 14 Seconds, Seamless Loopable):
+• 0.0s to 7.0s (Orbital Phase): The 3D coordinate sphere rotates actively on its vertical axis. Six whiteboard-style rectangular content panels orbit the sphere dynamically. The central portrait headshot from "photo_white_background.jpeg" remains stationed at the exact center, scaling subtly as if locked inside the core of the globe.
+• 7.0s to 9.0s (Glide to Foreground Transition): The sphere's rotation slows down smoothly to an elegant slow crawl. The avatar portrait headshot from "photo_white_background.jpeg" glides directly forward toward the camera view. The portrait scales up in size by 220%. Crucial stability directive: The portrait must remain flat, parallel to the lens plane, perfectly billboarding without any 3D inversion, horizontal flipping, or horizontal mirroring. It remains upright and perfectly stable as it moves to the forefront.
+• 9.0s to 14.0s (5-Second Static Hold Phase): The 3D sphere is held completely still in the background. The avatar portrait is locked front-and-center, standing completely legible, highly focused, and brilliantly bright for exactly 5 seconds. A cyan and purple radial aura flares gently behind the portrait to create immense visual depth.
+• 14.0s (Seamless Reset Transition): The avatar portrait smoothly glides back into the core center of the globe, shrinking to its original scale. The 3D digital sphere starts rotating actively again, transitioning seamlessly to the first frame.
+
+ORBITING WHITEPANEL TEXT CONTENTS: Include clear, legible white handwritten-style whiteboard cards floating in orbit displaying:
+- Node 1: "What I Do: GenAI, RAG Pipelines, LLM APIs"
+- Node 2: "My Role: Lead GenAI & AI Platforms Engineer"
+- Node 3: "Core Stack: Python, KQL, C++, ADX, Azure ADF"
+- Node 4: "Legacy: 17+ Yrs Systems (Cisco, Oracle, Microsoft)"
+- Node 5: "Education: M.Tech CS @ ISI Kolkata, NIT Patna"
+- Node 6: "Highlights: Microsoft Global Hackathon Winner"
+
+VISUAL STYLE: Sci-fi cybernetics, deep navy blue and cosmic violet ambient lighting, glowing neon dust, ultra-crisp resolution, photorealistic Unreal Engine 5 rendering, smooth 60fps frame transitions.`;
+
+            // Copy to clipboard execution
+            const dummyArea = document.createElement("textarea");
+            document.body.appendChild(dummyArea);
+            dummyArea.value = promptBoxText;
+            dummyArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummyArea);
+
+            // Trigger UI success response
+            const copyIcon = document.getElementById('copy-icon');
+            const copyBtnText = document.getElementById('copy-btn-text');
+            
+            copyIcon.className = "fa-solid fa-check text-green-400";
+            copyBtnText.textContent = "Copied successfully!";
+            copyBtnText.classList.add("text-green-400");
+            
+            setTimeout(() => {
+                copyIcon.className = "fa-regular fa-copy";
+                copyBtnText.textContent = "Copy Prompt Text";
+                copyBtnText.classList.remove("text-green-400");
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
