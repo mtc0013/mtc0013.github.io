@@ -1,0 +1,378 @@
+
+<style>
+#math-hero {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: #050d1a;
+  overflow: hidden;
+  border-radius: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+#math-canvas { display: block; width: 100%; height: 100%; }
+#hud {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+}
+.eq-label {
+  position: absolute;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: rgba(0,220,180,0.7);
+  letter-spacing: 0.06em;
+  background: rgba(0,10,25,0.6);
+  padding: 3px 9px;
+  border-radius: 3px;
+  border: 1px solid rgba(0,220,180,0.2);
+  pointer-events: all;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.eq-label:hover { color: #00dcb4; border-color: rgba(0,220,180,0.5); }
+.eq-label.active { color: #fff; background: rgba(0,180,140,0.25); border-color: rgba(0,220,180,0.7); }
+#eq-display {
+  position: absolute;
+  bottom: 20px; left: 50%; transform: translateX(-50%);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: rgba(0,220,180,0.9);
+  background: rgba(0,10,25,0.75);
+  padding: 8px 20px;
+  border-radius: 4px;
+  border: 1px solid rgba(0,220,180,0.3);
+  white-space: nowrap;
+  text-align: center;
+  pointer-events: none;
+}
+#eq-display span { color: #f59e0b; }
+#ctrl-bar {
+  position: absolute;
+  top: 16px; right: 16px;
+  display: flex; flex-direction: column; gap: 6px;
+  pointer-events: all;
+}
+#name-overlay {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+#name-overlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 4vw, 38px);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0 0 6px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+}
+#name-overlay h1 em {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #00dcb4;
+  font-style: normal;
+}
+#name-overlay p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: rgba(0,220,180,0.8);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0;
+}
+</style>
+
+<div id="math-hero">
+  <canvas id="math-canvas"></canvas>
+
+  <div id="hud">
+    <div id="ctrl-bar">
+      <span class="eq-label active" data-id="0">Torus Knot</span>
+      <span class="eq-label" data-id="1">Klein Surface</span>
+      <span class="eq-label" data-id="2">Lissajous</span>
+      <span class="eq-label" data-id="3">Saddle</span>
+      <span class="eq-label" data-id="4">Trefoil</span>
+    </div>
+
+    <div id="name-overlay">
+      <h1>Mohammad Equebal<br><em>Hussain</em></h1>
+      <p>PhD · M.Tech ISI · UGC-NET 99.6%ile</p>
+    </div>
+
+    <div id="eq-display"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function() {
+  const canvas = document.getElementById('math-canvas');
+  const eqDisplay = document.getElementById('eq-display');
+  const labels = document.querySelectorAll('.eq-label');
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(canvas.parentElement.clientWidth, canvas.parentElement.clientHeight);
+  renderer.setClearColor(0x050d1a, 1);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(55, canvas.clientWidth / canvas.clientHeight, 0.01, 100);
+  camera.position.set(0, 0, 4.5);
+
+  const ambientLight = new THREE.AmbientLight(0x001a3a, 1.2);
+  scene.add(ambientLight);
+  const pL1 = new THREE.PointLight(0x00dcb4, 3, 20);
+  pL1.position.set(5, 5, 5);
+  scene.add(pL1);
+  const pL2 = new THREE.PointLight(0xf59e0b, 2, 20);
+  pL2.position.set(-5, -3, 3);
+  scene.add(pL2);
+  const pL3 = new THREE.PointLight(0x4488ff, 1.5, 20);
+  pL3.position.set(0, -5, -5);
+  scene.add(pL3);
+
+  const TEAL   = new THREE.Color(0x00dcb4);
+  const AMBER  = new THREE.Color(0xf59e0b);
+  const BLUE   = new THREE.Color(0x4488ff);
+  const PURPLE = new THREE.Color(0xa855f7);
+  const WHITE  = new THREE.Color(0xffffff);
+
+  function makeWireMat(color, opacity) {
+    return new THREE.MeshPhongMaterial({
+      color, wireframe: true, transparent: true, opacity: opacity || 0.55,
+      shininess: 120
+    });
+  }
+  function makeSolidMat(color, emissive) {
+    return new THREE.MeshPhongMaterial({
+      color, emissive: emissive || color.clone().multiplyScalar(0.08),
+      transparent: true, opacity: 0.18, side: THREE.DoubleSide, shininess: 80
+    });
+  }
+
+  const surfaces = [
+    {
+      name: 0,
+      label: 'x(u,v)=(2+cos(3u/2)cos(v))cos(u) — Torus Knot',
+      build: () => buildTorusKnot(2.5, 0.3, 200, 18),
+      wireColor: TEAL, solidColor: TEAL, speed: 0.4
+    },
+    {
+      name: 1,
+      label: 'x=cos(u)(a+b·sin(v)) — Klein Bottle',
+      build: () => buildKlein(1.8),
+      wireColor: AMBER, solidColor: AMBER, speed: 0.3
+    },
+    {
+      name: 2,
+      label: 'x=A·sin(at+δ), y=B·sin(bt) — Lissajous 3D',
+      build: () => buildLissajous(3, 2, 5),
+      wireColor: PURPLE, solidColor: PURPLE, speed: 0.5
+    },
+    {
+      name: 3,
+      label: 'z = sin(√(x²+y²)) / √(x²+y²) — Sinc Surface',
+      build: () => buildSinc(60),
+      wireColor: BLUE, solidColor: BLUE, speed: 0.25
+    },
+    {
+      name: 4,
+      label: 'x=(2+cos(2t/3))cos(t), y=(2+cos(2t/3))sin(t) — Trefoil',
+      build: () => buildTrefoil(2.2, 0.28, 180, 14),
+      wireColor: new THREE.Color(0xff6b9d), solidColor: new THREE.Color(0xff6b9d), speed: 0.45
+    },
+  ];
+
+  function buildTorusKnot(radius, tube, tubularSegs, radialSegs) {
+    const geo = new THREE.TorusKnotGeometry(radius * 0.5, tube, tubularSegs, radialSegs, 2, 3);
+    return geo;
+  }
+
+  function buildKlein(scale) {
+    const N = 60;
+    const positions = [];
+    const indices = [];
+    function kleinPoint(u, v) {
+      u = u * Math.PI * 2; v = v * Math.PI * 2;
+      let x, y, z;
+      if (u < Math.PI) {
+        x = 3 * Math.cos(u) * (1 + Math.sin(u)) + (2 * (1 - Math.cos(u) / 2)) * Math.cos(u) * Math.cos(v);
+        z = -8 * Math.sin(u) - 2 * (1 - Math.cos(u) / 2) * Math.sin(u) * Math.cos(v);
+      } else {
+        x = 3 * Math.cos(u) * (1 + Math.sin(u)) + (2 * (1 - Math.cos(u) / 2)) * Math.cos(v + Math.PI);
+        z = -8 * Math.sin(u);
+      }
+      y = -2 * (1 - Math.cos(u) / 2) * Math.sin(v);
+      return new THREE.Vector3(x * scale * 0.12, y * scale * 0.12, z * scale * 0.12);
+    }
+    for (let i = 0; i <= N; i++) {
+      for (let j = 0; j <= N; j++) {
+        const p = kleinPoint(i / N, j / N);
+        positions.push(p.x, p.y, p.z);
+      }
+    }
+    for (let i = 0; i < N; i++) {
+      for (let j = 0; j < N; j++) {
+        const a = i * (N + 1) + j;
+        const b = a + N + 1;
+        indices.push(a, b, a + 1);
+        indices.push(b, b + 1, a + 1);
+      }
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geo.setIndex(indices);
+    geo.computeVertexNormals();
+    return geo;
+  }
+
+  function buildLissajous(a, b, c) {
+    const pts = [];
+    const segments = 2000;
+    for (let i = 0; i <= segments; i++) {
+      const t = (i / segments) * Math.PI * 6;
+      pts.push(new THREE.Vector3(
+        1.5 * Math.sin(a * t + Math.PI / 4),
+        1.5 * Math.sin(b * t),
+        1.5 * Math.sin(c * t + Math.PI / 3)
+      ));
+    }
+    const geo = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts, false), segments, 0.03, 8, false);
+    return geo;
+  }
+
+  function buildSinc(N) {
+    const positions = [], indices = [];
+    const range = 8;
+    for (let i = 0; i <= N; i++) {
+      for (let j = 0; j <= N; j++) {
+        const x = (i / N - 0.5) * range;
+        const y = (j / N - 0.5) * range;
+        const r = Math.sqrt(x * x + y * y) || 0.0001;
+        const z = 1.8 * Math.sin(r * 1.8) / r;
+        positions.push(x * 0.45, z * 0.45, y * 0.45);
+      }
+    }
+    for (let i = 0; i < N; i++) {
+      for (let j = 0; j < N; j++) {
+        const a = i * (N + 1) + j;
+        const b = a + N + 1;
+        indices.push(a, b, a + 1, b, b + 1, a + 1);
+      }
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geo.setIndex(indices);
+    geo.computeVertexNormals();
+    return geo;
+  }
+
+  function buildTrefoil(radius, tube, tubularSegs, radialSegs) {
+    const geo = new THREE.TorusKnotGeometry(radius * 0.5, tube, tubularSegs, radialSegs, 3, 2);
+    return geo;
+  }
+
+  let currentMeshes = [];
+  let currentIdx = 0;
+  let targetIdx = 0;
+  let transitionT = 1;
+  const TRANS_DUR = 0.8;
+
+  function buildMeshGroup(surf) {
+    const geo = surf.build();
+    const wire = new THREE.Mesh(geo, makeWireMat(surf.wireColor, 0.5));
+    const solid = new THREE.Mesh(geo, makeSolidMat(surf.solidColor));
+    const group = new THREE.Group();
+    group.add(solid, wire);
+    scene.add(group);
+    return group;
+  }
+
+  function switchTo(idx) {
+    if (idx === currentIdx && transitionT >= 1) return;
+    targetIdx = idx;
+    transitionT = 0;
+    labels.forEach(l => l.classList.remove('active'));
+    labels[idx].classList.add('active');
+    eqDisplay.innerHTML = surfaces[idx].label.replace(/—/, '—<span>') + '</span>';
+  }
+
+  function easeInOut(t) {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  }
+
+  let meshGroups = surfaces.map(buildMeshGroup);
+  meshGroups.forEach((g, i) => { g.visible = i === 0; });
+  eqDisplay.innerHTML = surfaces[0].label.replace(/—/, '—<span>') + '</span>';
+
+  labels.forEach(l => {
+    l.addEventListener('click', () => {
+      const id = parseInt(l.dataset.id);
+      switchTo(id);
+    });
+  });
+
+  let autoTimer = 0;
+  const AUTO_INTERVAL = 5;
+
+  const clock = new THREE.Clock();
+  let autoRotateX = 0, autoRotateY = 0;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const dt = clock.getDelta();
+    const elapsed = clock.getElapsedTime();
+
+    autoTimer += dt;
+    if (autoTimer > AUTO_INTERVAL) {
+      autoTimer = 0;
+      switchTo((currentIdx + 1) % surfaces.length);
+    }
+
+    if (transitionT < 1) {
+      transitionT = Math.min(1, transitionT + dt / TRANS_DUR);
+      const ease = easeInOut(transitionT);
+      meshGroups[currentIdx].children.forEach(m => {
+        m.material.opacity = (1 - ease) * (m.material instanceof THREE.MeshPhongMaterial && m.material.wireframe ? 0.5 : 0.18);
+      });
+      meshGroups[targetIdx].visible = true;
+      meshGroups[targetIdx].children.forEach(m => {
+        m.material.opacity = ease * (m.material.wireframe ? 0.5 : 0.18);
+      });
+      if (transitionT >= 1) {
+        meshGroups[currentIdx].visible = false;
+        currentIdx = targetIdx;
+      }
+    }
+
+    const surf = surfaces[currentIdx];
+    autoRotateY += dt * surf.speed;
+    autoRotateX = 0.2 * Math.sin(elapsed * 0.15);
+
+    meshGroups.forEach((g, i) => {
+      if (!g.visible) return;
+      g.rotation.y = autoRotateY;
+      g.rotation.x = autoRotateX + 0.1 * Math.sin(elapsed * 0.22 + i);
+      g.rotation.z = 0.05 * Math.sin(elapsed * 0.11 + i * 0.7);
+    });
+
+    pL1.position.x = 5 * Math.cos(elapsed * 0.4);
+    pL1.position.z = 5 * Math.sin(elapsed * 0.4);
+    pL2.position.y = -3 + 2 * Math.sin(elapsed * 0.3);
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  const ro = new ResizeObserver(() => {
+    const w = canvas.parentElement.clientWidth;
+    const h = canvas.parentElement.clientHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  });
+  ro.observe(canvas.parentElement);
+})();
+</script>
